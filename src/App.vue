@@ -1,27 +1,28 @@
 <template>
   <div id="app">
-    <ApartmentsItemVue
-      :descr="apartment.descr"
-      :price="apartment.price"
-      :rating="apartment.rating"
+    <ApartmentsList 
+    :items="apartments"
     />
   </div>
 </template>
 
 <script>
-import ApartmentsItemVue from "./components/apartment/ApartmentsItem";
+import ApartmentsList from "./components/apartment/ApartmentsList.vue";
+import apartments from './components/apartment/apartments'
 
 export default {
   name: "App",
   components: {
-    ApartmentsItemVue,
+    ApartmentsList,
   },
   data() {
     return {
+      apartments,
       apartment: {
         descr: "qwertyu asdfghj xcvbnm",
         price: 1010,
         rating: 3.5,
+        id: 1234,
       },
     };
   },
@@ -30,10 +31,14 @@ export default {
 
 <style>
 #app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: Montserrat, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  min-height: 100vh;
 }
-</style>
+
+.content {
+  flex-grow: 1;
+}</style>
