@@ -2,7 +2,7 @@
   <div class="wrapper-input">
     <input
       class="custom-input"
-      id="search"
+      id="searchPrice"
       v-bind="$attrs"
       v-model="inputValue"
     />
@@ -13,6 +13,14 @@
 export default {
   name: "CustomInput",
   inheritAttrs: false,
+
+  props: {
+    placeholder: {
+      type: String,
+      default: "",
+    }
+  },
+
   data() {
     return {
       inputValue: "",
