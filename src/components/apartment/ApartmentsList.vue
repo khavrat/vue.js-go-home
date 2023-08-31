@@ -1,6 +1,7 @@
 <template>
   <PageContainer>
-    <div class="apartments-list">
+<slot name="galleryTitle"></slot>
+    <ul class="apartments-list">
       <ApartmentsItemVue
         v-for="{ id, descr, rating, price } in items"
         :key="id"
@@ -8,7 +9,7 @@
         :rating="rating"
         :price="price"
       />
-    </div>
+    </ul>
   </PageContainer>
 </template>
 

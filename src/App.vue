@@ -1,29 +1,28 @@
 <template>
-  <div id="app">
-    <ApartmentsList 
-    :items="apartments"
-    />
+  <div class="content">
+    <h2>{{ text }}</h2>
+    <CustomInputVue v-model="text"/>
+    <ApartmentsList :items="apartments">
+      <template v-slot:galleryTitle>Подборка согласно выбора</template>
+    </ApartmentsList>
   </div>
 </template>
 
 <script>
 import ApartmentsList from "./components/apartment/ApartmentsList.vue";
-import apartments from './components/apartment/apartments'
+import apartments from "./components/apartment/apartments";
+import CustomInputVue from "./components/shared/CustomInput.vue";
 
 export default {
   name: "App",
   components: {
     ApartmentsList,
+    CustomInputVue,
   },
   data() {
     return {
+      text: "",
       apartments,
-      apartment: {
-        descr: "qwertyu asdfghj xcvbnm",
-        price: 1010,
-        rating: 3.5,
-        id: 1234,
-      },
     };
   },
 };
@@ -41,4 +40,5 @@ export default {
 
 .content {
   flex-grow: 1;
-}</style>
+}
+</style>

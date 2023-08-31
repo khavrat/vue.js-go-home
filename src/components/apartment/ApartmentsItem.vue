@@ -1,5 +1,5 @@
 <template>
-  <div class="apartments-item">
+  <li class="apartments-item" @click="log">
     <div class="apartments-item__inner">
       <img :src="imgSrc" alt="" class="apartments-item__photo" />
       <div class="apartments-item__content">
@@ -10,7 +10,7 @@
         <div class="apartments-item__price">UAH {{ price }}</div>
       </div>
     </div>
-  </div>
+  </li>
 </template>
 
 <script>
@@ -39,6 +39,9 @@ export default {
       default: "",
     },
   },
+  methods: {
+    log(e){console.log(e)}
+  }
 };
 </script>
 
