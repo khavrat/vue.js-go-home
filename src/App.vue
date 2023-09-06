@@ -1,26 +1,27 @@
 <template>
   <div class="content">
-    <h2>{{ text }}</h2>
-    <CustomSelectVue :items="['name', 'label', 'salary']" />
-    <CustomInputVue v-model="text" placeholder="Цена, от"/>
-    <ApartmentsList :items="apartments">
-      <template v-slot:galleryTitle>Подборка согласно выбора</template>
-    </ApartmentsList>
+    <Container>
+      <h2>{{ text }}</h2>
+      <ApartmentFilterForm @submit="logger"/>
+      <ApartmentsList :items="apartments">
+        <template v-slot:galleryTitle>Подборка согласно выбора</template>
+      </ApartmentsList>
+    </Container>
   </div>
 </template>
 
 <script>
+import Container from "./components/shared/Container.vue";
 import ApartmentsList from "./components/apartment/ApartmentsList.vue";
 import apartments from "./components/apartment/apartments";
-import CustomInputVue from "./components/shared/CustomInput.vue";
-import CustomSelectVue from "./components/shared/CustomSelect.vue";
+import ApartmentFilterForm from "./components/apartment/ApartmentFilterForm.vue";
 
 export default {
   name: "App",
   components: {
+    Container,
     ApartmentsList,
-    CustomInputVue,
-    CustomSelectVue,
+    ApartmentFilterForm,
   },
   data() {
     return {
@@ -28,6 +29,11 @@ export default {
       apartments,
     };
   },
+  methods: {
+    logger(value) {
+      console.log('submit button click', value)
+    }
+  }
 };
 </script>
 
