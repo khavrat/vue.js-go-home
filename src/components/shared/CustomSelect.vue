@@ -5,7 +5,7 @@
     v-bind="$attrs"
     v-model="inputValue"
   >
-    <option v-for="item in formatedItems" :key="item.value" :value="item.value">
+    <option v-for="item in formatedItems" :key="item.value" :value="item.value" :selected="item.selected">
       {{ item.label }}
     </option>
   </select>
@@ -24,17 +24,22 @@ export default {
   },
 
   data() {
+    console.log('data in customselect')
     return {
       inputValue: "",
     };
   },
   watch: {
     inputValue(newValue) {
+          console.log('watch inputValue in customselect', newValue)
+
       this.$emit("input", newValue);
     },
   },
   computed: {
     formatedItems() {
+                console.log('computed formatedItems in customselect')
+
       return this.items.map((item) => {
         return typeof item === "object"
           ? item

@@ -41,13 +41,26 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$emit("submit", {
+      this.$emit("updateFilters", {
         city: this.city,
         price: this.price,
       });
+      console.log("city, price in handleSubmit", this.city, this.price);
     },
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.form {
+  display: flex;
+
+  &__select {
+    margin-right: 30px;
+  }
+
+  &__submit {
+    margin-left: auto;
+  }
+}
+</style>

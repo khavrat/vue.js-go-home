@@ -1,11 +1,6 @@
 <template>
   <div class="wrapper-input">
-    <input
-      class="custom-input"
-      id="searchPrice"
-      v-bind="$attrs"
-      v-model="inputValue"
-    />
+    <input class="custom-input" v-bind="$attrs" v-model="inputValue" />
   </div>
 </template>
 
@@ -14,20 +9,17 @@ export default {
   name: "CustomInput",
   inheritAttrs: false,
 
-  props: {
-    placeholder: {
-      type: String,
-      default: "",
-    }
-  },
-
   data() {
+    console.log('data in custominput')
     return {
       inputValue: "",
+      placeholder: "",
     };
   },
   watch: {
     inputValue(newValue) {
+          console.log('watch inputValue in custominput', newValue)
+
       this.$emit("input", newValue);
     },
   },
