@@ -1,13 +1,17 @@
 <template>
-  <div class="content">
-    <Container>
-      <h2>{{ text }}</h2>
+  <HeaderOfPage />
+  <Container>
       <ApartmentFilterForm @updateFilters="filter" />
-      <ApartmentsList :items="filteredApartments" >
-        <template v-slot:galleryTitle>Подборка согласно выбора</template>
-      </ApartmentsList>
-    </Container>
-  </div>
+
+      <div class="content">
+        <ApartmentsList :items="filteredApartments">
+          <template v-slot:galleryTitle>
+            <p class="title">Подборка согласно выбора</p></template
+          >
+        </ApartmentsList>
+      </div>
+  </Container>
+  <FooterOfPage />
 </template>
 
 <script>
@@ -15,6 +19,8 @@ import Container from "./components/shared/Container.vue";
 import ApartmentsList from "./components/apartment/ApartmentsList.vue";
 import apartments from "./components/apartment/apartments";
 import ApartmentFilterForm from "./components/apartment/ApartmentFilterForm.vue";
+import HeaderOfPage from "./components/HeaderOfPage.vue";
+import FooterOfPage from "./components/FooterOfPage.vue";
 
 export default {
   name: "App",
@@ -22,10 +28,11 @@ export default {
     Container,
     ApartmentsList,
     ApartmentFilterForm,
+    FooterOfPage,
+    HeaderOfPage,
   },
   data() {
     return {
-      text: "",
       apartments,
       filters: {
         city: "",
@@ -35,7 +42,10 @@ export default {
   },
   computed: {
     filteredApartments() {
-      console.log('this.filterByCity(this.filterByPrice(this.apartments))',this.filterByCity(this.filterByPrice(this.apartments)))
+      console.log(
+        "this.filterByCity(this.filterByPrice(this.apartments))",
+        this.filterByCity(this.filterByPrice(this.apartments))
+      );
       return this.filterByCity(this.filterByPrice(this.apartments));
     },
   },
@@ -46,7 +56,6 @@ export default {
       this.filters.city = city;
       this.filters.price = price;
       console.log("2submit button click", city, price);
-
     },
     filterByCity(apartments) {
       if (!this.filters.city) return apartments;
@@ -66,7 +75,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "./assets/scss/variables.scss";
+
 #app {
   display: flex;
   flex-direction: column;
@@ -78,5 +89,18 @@ export default {
 
 .content {
   flex-grow: 1;
+}
+
+.title {
+  position: fixed;
+  padding-top: 203px;
+  padding-bottom: 20px;
+  background-color: $wight-color;
+  z-index: 2;
+  width: 100%;
+  color: $black-color;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: Montserrat;
 }
 </style>

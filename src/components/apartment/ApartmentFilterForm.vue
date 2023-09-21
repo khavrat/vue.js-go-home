@@ -54,6 +54,9 @@ export default {
 <style lang="scss" scoped>
 .form {
   display: flex;
+  position: fixed;
+  top: 120px;
+  z-index: 3;
 
   &__select {
     margin-right: 30px;

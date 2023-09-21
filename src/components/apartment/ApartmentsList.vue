@@ -1,5 +1,5 @@
 <template>
-  <PageContainer>
+  <Container>
 <slot name="galleryTitle"></slot>
     <ul class="apartments-list">
       <ApartmentsItemVue
@@ -10,18 +10,18 @@
         :price="price"
       />
     </ul>
-  </PageContainer>
+  </Container>
 </template>
 
 <script>
-import PageContainer from "../shared/Container.vue";
+import Container from "../shared/Container.vue";
 import ApartmentsItemVue from "./ApartmentsItem";
 
 export default {
   name: "ApartmentsList",
   components: {
     ApartmentsItemVue,
-    PageContainer,
+    Container,
   },
   props: {
     items: {
@@ -38,5 +38,6 @@ export default {
   flex-wrap: wrap;
   margin-left: -15px;
   margin-right: -15px;
+  padding-top: 247px;
 }
 </style>
