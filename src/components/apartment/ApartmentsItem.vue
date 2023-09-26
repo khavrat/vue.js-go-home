@@ -8,6 +8,7 @@
           <StarRatingVue :rating="rating" />
         </div>
         <div class="apartments-item__price">UAH {{ price }}</div>
+        <router-link to="/apartment" class="apartments-item__link"></router-link>
       </div>
     </div>
   </li>
@@ -40,8 +41,10 @@ export default {
     },
   },
   methods: {
-    log(e){console.log(e)}
-  }
+    log(e) {
+      console.log(e);
+    },
+  },
 };
 </script>
 
