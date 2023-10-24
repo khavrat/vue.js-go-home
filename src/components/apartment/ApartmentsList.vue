@@ -1,10 +1,11 @@
 <template>
   <Container>
-<slot name="galleryTitle"></slot>
+    <slot name="galleryTitle"></slot>
     <ul class="apartments-list">
       <ApartmentsItemVue
         v-for="{ id, descr, rating, price } in items"
         :key="id"
+        :id="id"
         :descr="descr"
         :rating="rating"
         :price="price"

@@ -1,6 +1,7 @@
 <template>
   <Container>
     <h1 class="page">ApartmentPage</h1>
+    <p>Apartment ID: {{ $route.params.id }}</p>
   </Container>
 </template>
 
@@ -9,7 +10,13 @@ import Container from "../components/shared/Container.vue";
 
 export default {
   name: "ApartmentPage",
-  components: Container,
+  components: {
+    Container,
+  },
+  mounted() {
+    console.log(" this.$router:>> ", this.$router);
+    console.log(" this.$route:>> ", this.$route);
+  },
 };
 </script>
 
