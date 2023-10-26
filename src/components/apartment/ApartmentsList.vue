@@ -3,9 +3,10 @@
     <slot name="galleryTitle"></slot>
     <ul class="apartments-list">
       <ApartmentsItemVue
-        v-for="{ id, descr, rating, price } in items"
+        v-for="{ id, imgUrl, descr, rating, price } in items"
         :key="id"
         :id="id"
+        :imgUrl="imgUrl"
         :descr="descr"
         :rating="rating"
         :price="price"

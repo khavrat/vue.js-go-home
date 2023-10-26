@@ -2,11 +2,11 @@
   <main>
     <Container>
       <ApartmentFilterForm @updateFilters="filter" />
-        <ApartmentsList :items="filteredApartments">
-          <template v-slot:galleryTitle>
-            <p class="title">Подборка согласно выбора</p></template
-          >
-        </ApartmentsList>
+      <ApartmentsList :items="filteredApartments">
+        <template v-slot:galleryTitle>
+          <p class="title">Подборка согласно выбора</p></template
+        >
+      </ApartmentsList>
     </Container>
   </main>
 </template>
@@ -14,8 +14,8 @@
 <script>
 import Container from "../components/shared/Container.vue";
 import ApartmentsList from "../components/apartment/ApartmentsList.vue";
-import apartments from "../components/apartment/apartments";
 import ApartmentFilterForm from "../components/apartment/ApartmentFilterForm.vue";
+import { getApartmentsList } from "../services/apartments.service";
 
 export default {
   name: "App",
@@ -26,7 +26,7 @@ export default {
   },
   data() {
     return {
-      apartments,
+      apartments: [],
       filters: {
         city: "",
         price: 0,
@@ -41,6 +41,15 @@ export default {
       );
       return this.filterByCity(this.filterByPrice(this.apartments));
     },
+  },
+  async created() {
+    try {
+      const { data } = await getApartmentsList();
+      console.log(data)
+      this.apartments = data;
+    } catch (error) {
+      console.error(error);
+    }
   },
   methods: {
     filter({ city, price }) {

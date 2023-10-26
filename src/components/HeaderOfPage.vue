@@ -1,8 +1,8 @@
 <template>
   <header class="header">
     <Container>
-      <Logo/>
-       </Container>
+      <router-link to="/"> <Logo /> </router-link>
+    </Container>
   </header>
 </template>
 

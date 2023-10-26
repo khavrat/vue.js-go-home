@@ -1,7 +1,7 @@
 <template>
   <li class="apartments-item" @click="log">
     <div class="apartments-item__inner">
-      <img :src="imgSrc" alt="" class="apartments-item__photo" />
+      <img :src="imgUrl" alt="apartment" class="apartments-item__photo" />
       <div class="apartments-item__content">
         <p class="apartments-item__description">{{ descr }}</p>
         <div class="apartments-item__rating">
@@ -42,7 +42,7 @@ export default {
       type: Number,
       required: true,
     },
-    imgSrc: {
+    imgUrl: {
       type: String,
       default: "",
     },
