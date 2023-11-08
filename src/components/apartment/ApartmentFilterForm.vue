@@ -1,11 +1,7 @@
 <template>
   <form class="form" @submit.prevent="handleSubmit">
     <CustomSelect :items="cities" v-model="city" class="form__select" />
-    <CustomInput
-      v-model="price"
-      placeholder="Цена, от"
-      error-message="Не должно быть пустым"
-    />
+    <CustomInput type="number" min="0" inputmode="numeric" v-model="price" placeholder="Цена, от" />
     <MainButton class="form__submit" type="submit">Подбор жилья</MainButton>
   </form>
 </template>

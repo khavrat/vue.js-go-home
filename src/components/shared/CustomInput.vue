@@ -46,19 +46,5 @@ export default {
   &::placeholder {
     color: inherit;
   }
-
-  &--error {
-    border-color: $error-color;
-  }
-
-  &__error {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 100%;
-    font-size: 12px;
-    color: $error-color;
-    line-height: 1.3;
-  }
 }
 </style>
